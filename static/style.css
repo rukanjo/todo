@@ -89,7 +89,10 @@ body {
   z-index: 1000;
 }
 
-/* Стили для элементов списка */
+#completed-tasks-container h3 {
+  margin-top: 0;
+}
+
 #completed-tasks-list li {
   font-size: 0.9rem;
   margin-bottom: 5px;
