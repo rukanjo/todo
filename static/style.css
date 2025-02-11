@@ -1,0 +1,300 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.admin-panel {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+}
+
+.admin-panel button {
+  padding: 10px 20px;
+  background-color: white;
+  color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.column {
+  width: 30%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.column h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.tasks {
+  min-height: 200px;
+}
+
+.task {
+  background-color: #e9ecef;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.task:hover {
+  transform: scale(1.05);
+}
+
+/* Стили для кнопки */
+#show-completed-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для контейнера завершённых задач */
+#completed-tasks-container {
+  position: fixed;
+  bottom: 70px;
+  left: 20px;
+  max-width: 300px;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+}
+
+/* Стили для элементов списка */
+#completed-tasks-list li {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  cursor: pointer;
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background-color: #0056b3;
+}
+
+/* Стили для модального окна */
+#add-task-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#add-task-modal .modal-content {
+  background-color: white;
+  margin: 5% auto; /* Центрируем по вертикали */
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px; /* Фиксированная ширина */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative; /* Для позиционирования крестика */
+}
+#add-task-modal label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+#add-task-modal input,
+#add-task-modal textarea {
+  width: 100%; /* Занимает всю доступную ширину */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+/* Добавляем стили для textarea */
+#add-task-modal textarea {
+  width: 409px; /* Фиксированная ширина */
+  height: 120px; /* Фиксированная высота */
+  resize: none; /* Отключаем возможность растягивания */
+}
+#add-task-modal button[type="submit"] {
+  display: block;
+  margin-right: auto; /* Кнопка справа */
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#add-task-modal button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Стили для модального окна статистики */
+#statistics-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#statistics-modal .modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+#statistics-modal h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#statistics-modal p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Стили для диаграммы */
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Стили для строки диаграммы */
+.chart-bar {
+  display: flex;
+  align-items: center; /* Выравнивание по центру по вертикали */
+  justify-content: space-between; /* Распределение элементов */
+  gap: 10px; /* Расстояние между элементами */
+}
+
+/* Стили для метки (текст слева) */
+.chart-label {
+  font-weight: bold;
+  width: 110px; /* Фиксированная ширина для меток */
+  text-align: left; /* Выравнивание текста по левому краю */
+}
+
+/* Стили для контейнера полоски */
+.chart-fill-container {
+  flex: 1; /* Занимает оставшееся пространство */
+  height: 20px;
+  background-color: #f0f0f0; /* Прозрачная часть (фон) */
+  border-radius: 5px;
+  overflow: hidden; /* Обрезаем содержимое за пределами контейнера */
+  direction: rtl; /* Заполнение справа налево */
+}
+
+/* Стили для заполняемой части полоски */
+.chart-fill {
+  height: 100%;
+  background-color: #ff9800; /* Цвет заполнения */
+  border-radius: 5px;
+  min-width: 5px; /* Минимальная ширина полоски */
+}
+
+/* Стили для процентов (текст справа) */
+.chart-percentage {
+  width: 50px; /* Фиксированная ширина для процентов */
+  text-align: right; /* Выравнивание текста по правому краю */
+}
+
+/* Цвета для диаграммы */
+#new-tasks-fill {
+  background-color: #ff9800; /* Оранжевый */
+}
+
+#in-progress-tasks-fill {
+  background-color: #2196f3; /* Синий */
+}
+
+#review-tasks-fill {
+  background-color: #4caf50; /* Зеленый */
+}
+
+#completed-tasks-fill {
+  background-color: #f44336; /* Красный */
+}
+
+/* Стили для надписи "Всего задач" */
+.total-tasks-header {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #000000;
+}

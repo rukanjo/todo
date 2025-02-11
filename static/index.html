@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Супер классный менеджер тасочек</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <!-- Админ-панель -->
+  <header class="admin-panel">
+    <button id="add-task-btn">Добавить задачу</button>
+    <button id="statistics-btn">Статистика</button>
+    <button id="show-completed-btn">Показать завершённые задачи</button>
+  </header>
+
+  <!-- Основной контент -->
+  <div class="container">
+    <!-- Левый столбец (Операторы) -->
+    <div class="column" id="operators-column">
+      <h2>Свежая Таска</h2>
+      <div class="tasks" id="operators-tasks"></div>
+    </div>
+
+    <!-- Средний столбец (Воркеры) -->
+    <div class="column" id="workers-column">
+      <h2>В работе</h2>
+      <div class="tasks" id="workers-tasks"></div>
+    </div>
+
+    <!-- Правый столбец (Руководители) -->
+    <div class="column" id="managers-column">
+      <h2>На проверку</h2>
+      <div class="tasks" id="managers-tasks"></div>
+    </div>
+  </div>
+
+  <!-- Модальное окно для просмотра задачи -->
+  <div class="modal" id="task-modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Подробное описание задачи</h2>
+      <p id="task-details"></p>
+      <button id="move-next-btn">Переместить на следующий шаг</button>
+      <button id="move-back-btn">Отправить назад</button>
+      <button id="delete-task-btn">Удалить задачу</button>
+    </div>
+  </div>
+
+  <!-- Модальное окно для добавления задачи -->
+  <div class="modal" id="add-task-modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 style="text-align: center;">Добавить новую задачу</h2>
+      <form id="add-task-form">
+        <label for="task-title">Заголовок:</label>
+        <input type="text" id="task-title" name="title" required />
+        <label for="task-description">Описание:</label>
+        <textarea id="task-description" name="description"></textarea>
+        <button type="submit">Добавить задачу</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Модальное окно для статистики -->
+  <div class="modal" id="statistics-modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Статистика задач</h2>
+      <div class="total-tasks-header">
+        Всего задач: <span id="total-tasks">0</span>
+      </div>
+      <div class="chart-container">
+        <div class="chart-bar">
+          <span class="chart-label">Новые:</span>
+          <div class="chart-fill-container">
+            <div class="chart-fill" id="new-tasks-fill"></div>
+          </div>
+          <span class="chart-percentage" id="new-tasks-percentage">0%</span>
+        </div>
+        <div class="chart-bar">
+          <span class="chart-label">В работе:</span>
+          <div class="chart-fill-container">
+            <div class="chart-fill" id="in-progress-tasks-fill"></div>
+          </div>
+          <span class="chart-percentage" id="in-progress-tasks-percentage">0%</span>
+        </div>
+        <div class="chart-bar">
+          <span class="chart-label">Валидация:</span>
+          <div class="chart-fill-container">
+            <div class="chart-fill" id="review-tasks-fill"></div>
+          </div>
+          <span class="chart-percentage" id="review-tasks-percentage">0%</span>
+        </div>
+        <div class="chart-bar">
+          <span class="chart-label">Завершенные:</span>
+          <div class="chart-fill-container">
+            <div class="chart-fill" id="completed-tasks-fill"></div>
+          </div>
+          <span class="chart-percentage" id="completed-tasks-percentage">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Контейнер для списка завершённых задач -->
+  <div id="completed-tasks-container" style="display: none;">
+    <h3>Завершённые задачи:</h3>
+    <ul id="completed-tasks-list"></ul>
+  </div>
+
+  <!-- Подключение скриптов -->
+  <script src="/static/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+</body>
+</html>
